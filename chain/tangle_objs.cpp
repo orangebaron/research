@@ -10,8 +10,8 @@
 
 namespace chain {
   template <class baseTxn>
-  struct Tangle_Block_Noncefree: Byteable {
-    typedef const std::array<Mined_Obj const*, 2> twoTangles;
+  struct TangleBlockNoncefree: Byteable {
+    typedef const std::array<MinedObj const*, 2> twoTangles;
 
     const baseTxn transaction;
     const twoTangles tanglesApproved;
@@ -25,10 +25,10 @@ namespace chain {
       return std::vector<char>();
     }
 
-    Tangle_Block_Noncefree(const baseTxn t, twoTangles a):
+    TangleBlockNoncefree(const baseTxn t, twoTangles a):
       transaction(t), tanglesApproved(a) {}
-    Tangle_Block_Noncefree(const baseTxn t): Tangle_Block_Noncefree(t, twoTangles()) {}
-    Tangle_Block_Noncefree(): Tangle_Block_Noncefree(baseTxn()) {}
+    TangleBlockNoncefree(const baseTxn t): TangleBlockNoncefree(t, twoTangles()) {}
+    TangleBlockNoncefree(): TangleBlockNoncefree(baseTxn()) {}
   };
 }
 

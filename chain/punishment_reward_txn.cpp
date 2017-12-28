@@ -2,7 +2,7 @@
 #define PUNISHMENT_REWARD_TXN_CPP
 
 namespace chain {
-  struct Punishment_Reward_Txn{};
+  struct PunishmentRewardTxn{};
 }
 
 #endif

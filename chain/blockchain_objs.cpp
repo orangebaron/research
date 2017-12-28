@@ -10,7 +10,7 @@
 
 namespace chain {
   template <class baseTxn>
-  struct Blockchain_Block_Noncefree: Byteable {
+  struct BlockchainBlockNoncefree: Byteable {
     const std::vector<baseTxn> transactions;
     const baseTxn minerRewardTxn;
 
@@ -26,7 +26,7 @@ namespace chain {
       return std::vector<char>();
     }
 
-    Blockchain_Block_Noncefree(const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn):
+    BlockchainBlockNoncefree(const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn):
       transactions(transactions), minerRewardTxn(minerRewardTxn) {}
   };
 }
