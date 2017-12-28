@@ -11,6 +11,9 @@ namespace chain {
   bool checkHash(std::vector<char> arr, int difficulty) { //TODO
     return true;
   }
+  typedef struct{} Pubkey; //TODO
+  typedef struct{} Privkey; //TODO
+  typedef struct{} Signature; //TODO
 }
 
 #endif
