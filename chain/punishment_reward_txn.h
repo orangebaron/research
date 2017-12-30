@@ -1,8 +1,8 @@
-#include "byteable.cpp"
-#include "code.cpp"
+#ifndef PUNISHMENT_REWARD_TXN_H
+#define PUNISHMENT_REWARD_TXN_H
 
-#ifndef PUNISHMENT_REWARD_TXN_CPP
-#define PUNISHMENT_REWARD_TXN_CPP
+#include "byteable.h"
+#include "code.h"
 
 namespace chain {
   struct PunRwrdSolutionTxn: public Byteable {

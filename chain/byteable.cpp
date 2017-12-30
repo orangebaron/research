@@ -1,40 +1,24 @@
-#include <vector>
-#include "crypto.cpp"
+#include "byteable.h"
 
-#ifndef BYTEABLE_CPP
-#define BYTEABLE_CPP
+using namespace chain;
 
-namespace chain {
-  struct Byteable {
-    virtual std::vector<char> getBytes() const = 0;
-  };
-
-  struct MinedObj: public Byteable {
-    Byteable *const obj;
-    long nonce;
-    const int difficulty;
-
-    std::vector<char> getBytes() const {
-      std::vector<char> bytes = obj->getBytes();
-      for (int i=0;i<4;i++)
-        bytes.push_back( ((char *)(&nonce))[i] );
-      return bytes;
-    }
-    bool check() const {
-      return checkHash(getBytes(), difficulty);
-    }
-    MinedObj(Byteable *obj, int difficulty): obj(obj), difficulty(difficulty) {}
-    MinedObj(Byteable *obj, long nonce, int difficulty): obj(obj), nonce(nonce), difficulty(difficulty) {}
-    template <class objType> MinedObj(std::vector<char> bytes, int difficulty): difficulty(difficulty) {
-      char nonceChars[4];
-      for (int i=3;i>=0;i--) {
-        nonceChars[i] = bytes.back();
-        bytes.pop_back();
-      }
-      nonce = (int) *nonceChars;
-      obj = objType(bytes);
-    }
-  };
+std::vector<char> MinedObj::getBytes() const {
+  std::vector<char> bytes = obj->getBytes();
+  for (int i=0;i<4;i++)
+    bytes.push_back( ((char *)(&nonce))[i] );
+  return bytes;
 }
-
-#endif
+bool MinedObj::check() const {
+  return checkHash(getBytes(), difficulty);
+}
+MinedObj::MinedObj(Byteable *obj, int difficulty): obj(obj), difficulty(difficulty) {}
+MinedObj::MinedObj(Byteable *obj, long nonce, int difficulty): obj(obj), nonce(nonce), difficulty(difficulty) {}
+template <class objType> MinedObj::MinedObj(std::vector<char> bytes, int difficulty): difficulty(difficulty) {
+  char nonceChars[4];
+  for (int i=3;i>=0;i--) {
+    nonceChars[i] = bytes.back();
+    bytes.pop_back();
+  }
+  nonce = (int) *nonceChars;
+  obj = objType(bytes);
+}

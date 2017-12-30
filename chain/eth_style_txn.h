@@ -1,8 +1,8 @@
-#include "byteable.cpp"
-#include "code.cpp"
+#ifndef ETH_STYLE_TXN_H
+#define ETH_STYLE_TXN_H
 
-#ifndef ETH_STYLE_TXN_CPP
-#define ETH_STYLE_TXN_CPP
+#include "byteable.h"
+#include "code.h"
 
 namespace chain {
   struct EthStyleTxn: public Byteable {

@@ -1,9 +1,9 @@
-#include <vector>
-#include "byteable.cpp"
-#include "crypto.cpp"
+#ifndef CODE_H
+#define CODE_H
 
-#ifndef CODE_CPP
-#define CODE_CPP
+#include <vector>
+#include "byteable.h"
+#include "crypto.h"
 
 namespace chain {
   typedef unsigned long MoneyAmt;

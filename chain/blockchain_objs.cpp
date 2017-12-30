@@ -1,34 +1,21 @@
-#include <vector>
-#include <array>
-#include "byteable.cpp"
-#include "crypto.cpp"
-#include "eth_style_txn.cpp"
-#include "punishment_reward_txn.cpp"
+#include "blockchain_objs.h"
 
-#ifndef BLOCKCHAIN_OBJS_CPP
-#define BLOCKCHAIN_OBJS_CPP
+using namespace chain;
 
-namespace chain {
-  template <class baseTxn>
-  struct BlockchainBlockNoncefree: Byteable {
-    const std::vector<baseTxn> transactions;
-    const baseTxn minerRewardTxn;
+template <class baseTxn>
+std::vector<char> BlockchainBlockNoncefree<baseTxn>::getBytes() const {
+  std::vector<char> txnHash();
+  for (int i=0;i<transactions.size();i++) { //I could merkel tree but naaaaah
+    std::array<char, 512> h = hash(transactions[i]->getBytes());
+    txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
+  }
+  std::array<char, 512> h = hash(minerRewardTxn->getBytes());
+  txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
 
-    std::vector<char> getBytes() const {
-      std::vector<char> txnHash();
-      for (int i=0;i<transactions.size();i++) { //I could merkel tree but naaaaah
-        std::array<char, 512> h = hash(transactions[i]->getBytes());
-        txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
-      }
-      std::array<char, 512> h = hash(minerRewardTxn->getBytes());
-      txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
-
-      return std::vector<char>();
-    }
-
-    BlockchainBlockNoncefree(const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn):
-      transactions(transactions), minerRewardTxn(minerRewardTxn) {}
-  };
+  return std::vector<char>();
 }
 
-#endif
+template <class baseTxn>
+BlockchainBlockNoncefree<baseTxn>::BlockchainBlockNoncefree
+  (const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn):
+  transactions(transactions), minerRewardTxn(minerRewardTxn) {}
