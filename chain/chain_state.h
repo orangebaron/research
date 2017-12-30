@@ -7,12 +7,10 @@
 
 namespace chain {
   template <class baseTxn>
-  struct ChainStateProof: public Byteable {
-    std::map<Pubkey, baseTxn> moneyOwned;
-    std::map<Pubkey, baseTxn> contract;
-    std::map<Pubkey, baseTxn> contractMoneyOwned;
-
-    std::vector<char> getBytes() const; //TODO
+  struct ChainStateProof {
+    std::map<Pubkey, std::vector<baseTxn>> moneyOwned;
+    std::map<Pubkey, std::vector<baseTxn>> contract;
+    std::map<Pubkey, std::vector<baseTxn>> contractMoneyOwned;
   };
 
   template <class baseTxn>
