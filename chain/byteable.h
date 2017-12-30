@@ -10,9 +10,9 @@ namespace chain {
   };
 
   struct MinedObj: public Byteable {
-    Byteable *const obj;
+    Byteable *obj;
     long nonce;
-    const int difficulty;
+    int difficulty;
 
     std::vector<char> getBytes() const;
     bool check() const;

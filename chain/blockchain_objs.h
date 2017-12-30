@@ -11,10 +11,10 @@
 namespace chain {
   template <class baseTxn>
   struct BlockchainBlockNoncefree: Byteable {
-    const std::vector<baseTxn> transactions;
-    const baseTxn minerRewardTxn;
+    std::vector<baseTxn> transactions;
+    baseTxn minerRewardTxn;
 
-    BlockchainBlockNoncefree(const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn);
+    BlockchainBlockNoncefree(std::vector<baseTxn> transactions, baseTxn minerRewardTxn);
     std::vector<char> getBytes() const;
   };
 }

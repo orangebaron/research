@@ -17,5 +17,5 @@ std::vector<char> BlockchainBlockNoncefree<baseTxn>::getBytes() const {
 
 template <class baseTxn>
 BlockchainBlockNoncefree<baseTxn>::BlockchainBlockNoncefree
-  (const std::vector<baseTxn> transactions, const baseTxn minerRewardTxn):
+  (std::vector<baseTxn> transactions, baseTxn minerRewardTxn):
   transactions(transactions), minerRewardTxn(minerRewardTxn) {}

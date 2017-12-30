@@ -13,11 +13,11 @@ std::vector<char> TangleBlockNoncefree<baseTxn>::getBytes() const {
 }
 
 template <class baseTxn>
-TangleBlockNoncefree<baseTxn>::TangleBlockNoncefree(const baseTxn t, twoTangles a):
+TangleBlockNoncefree<baseTxn>::TangleBlockNoncefree(baseTxn t, twoTangles a):
   transaction(t), tanglesApproved(a) {}
 
 template <class baseTxn>
-TangleBlockNoncefree<baseTxn>::TangleBlockNoncefree(const baseTxn t):
+TangleBlockNoncefree<baseTxn>::TangleBlockNoncefree(baseTxn t):
   TangleBlockNoncefree(t, twoTangles()) {}
 
 template <class baseTxn>

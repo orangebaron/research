@@ -11,15 +11,15 @@
 namespace chain {
   template <class baseTxn>
   struct TangleBlockNoncefree: Byteable {
-    typedef const std::array<MinedObj const*, 2> twoTangles;
+    typedef const std::array<MinedObj*, 2> twoTangles;
 
-    const baseTxn transaction;
-    const twoTangles tanglesApproved;
+    baseTxn transaction;
+    twoTangles tanglesApproved;
 
     std::vector<char> getBytes() const;
 
-    TangleBlockNoncefree(const baseTxn t, twoTangles a);
-    TangleBlockNoncefree(const baseTxn t);
+    TangleBlockNoncefree(baseTxn t, twoTangles a);
+    TangleBlockNoncefree(baseTxn t);
     TangleBlockNoncefree();
   };
 }
