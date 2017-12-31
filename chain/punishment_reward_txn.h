@@ -20,7 +20,7 @@ namespace chain {
     Signature signature;
     std::vector<char> getBytes() const; //TODO
   };
-  enum PunishmentRewardTxnType { ContractTxn, CallTxn, SolutionTxn, CapTxn };
+  enum class PunishmentRewardTxnType { ContractTxn, CallTxn, SolutionTxn, CapTxn };
   struct PunishmentRewardTxn: public Byteable {
     union {
       ContractCreateTxn contractTxn;

@@ -5,7 +5,7 @@
 #include "code.h"
 
 namespace chain {
-  enum EthTxnType { ContractTxn, CallTxn };
+  enum class EthTxnType { ContractTxn, CallTxn };
   struct EthStyleTxn: public Byteable {
     union {
       ContractCreateTxn contractTxn;
