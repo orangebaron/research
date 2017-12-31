@@ -5,9 +5,16 @@
 #include "code.h"
 
 namespace chain {
+  enum EthTxnType { ContractTxn, CallTxn };
   struct EthStyleTxn: public Byteable {
-    CodeTxn codeTxn;
-    CodeResults *results;
+    union {
+      ContractCreateTxn contractTxn;
+      struct {
+        ContractCallTxn call;
+        CodeResults *results;
+      } callTxn;
+    } txn;
+    EthTxnType type;
   };
 }
 

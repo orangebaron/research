@@ -16,11 +16,10 @@ namespace chain {
     baseTxn transaction;
     twoTangles tanglesApproved;
 
-    std::vector<char> getBytes() const;
-
     TangleBlockNoncefree(baseTxn t, twoTangles a);
     TangleBlockNoncefree(baseTxn t);
     TangleBlockNoncefree();
+    std::vector<char> getBytes() const;
   };
 }
 

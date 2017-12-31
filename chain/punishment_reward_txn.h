@@ -20,10 +20,11 @@ namespace chain {
     Signature signature;
     std::vector<char> getBytes() const; //TODO
   };
-  enum class PunishmentRewardTxnType { CodeTxn, SolutionTxn, CapTxn };
+  enum PunishmentRewardTxnType { ContractTxn, CallTxn, SolutionTxn, CapTxn };
   struct PunishmentRewardTxn: public Byteable {
     union {
-      struct CodeTxn codeTxn; //why this needs "struct" but everything else doesn't is beyond me
+      ContractCreateTxn contractTxn;
+      ContractCallTxn callTxn;
       PunRwrdSolutionTxn solutionTxn;
       MinedObj capTxn;
     } txn;
