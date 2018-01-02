@@ -1,6 +1,7 @@
 #ifndef BYTEABLE_H
 #define BYTEABLE_H
 
+#include <map>
 #include <vector>
 #include "crypto.h"
 
@@ -14,12 +15,14 @@ namespace chain {
     long nonce;
     int difficulty;
 
-    std::vector<char> getBytes() const;
     bool check() const;
     MinedObj(Byteable *obj, int difficulty);
     MinedObj(Byteable *obj, long nonce, int difficulty);
-    template <class objType> MinedObj(std::vector<char> bytes, int difficulty);
+    template <class objType> MinedObj(std::vector<char> &bytes, int difficulty);
+    std::vector<char> getBytes() const;
   };
+
+  template<class a, class b> std::vector<char> getBytes(const std::map<a,b>); //TODO
 }
 
 #endif

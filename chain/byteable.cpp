@@ -13,7 +13,7 @@ bool MinedObj::check() const {
 }
 MinedObj::MinedObj(Byteable *obj, int difficulty): obj(obj), difficulty(difficulty) {}
 MinedObj::MinedObj(Byteable *obj, long nonce, int difficulty): obj(obj), nonce(nonce), difficulty(difficulty) {}
-template <class objType> MinedObj::MinedObj(std::vector<char> bytes, int difficulty): difficulty(difficulty) {
+template <class objType> MinedObj::MinedObj(std::vector<char> &bytes, int difficulty): difficulty(difficulty) {
   char nonceChars[4];
   for (int i=3;i>=0;i--) {
     nonceChars[i] = bytes.back();

@@ -4,15 +4,16 @@ using namespace chain;
 
 template <class baseTxn>
 std::vector<char> BlockchainBlockNoncefree<baseTxn>::getBytes() const {
-  std::vector<char> txnHash();
-  for (int i=0;i<transactions.size();i++) { //I could merkel tree but naaaaah
+  std::vector<char> returnVal();
+  for (int i=0;i<transactions.size();i++) { //TODO: merkel tree
     std::array<char, 512> h = hash(transactions[i]->getBytes());
-    txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
+    returnVal.insert(returnVal.end(), h.data(), h.data()+h.size());
   }
+  
   std::array<char, 512> h = hash(minerRewardTxn->getBytes());
-  txnHash.insert(txnHash.end(), h.data(), h.data()+h.size());
+  returnVal.insert(returnVal.end(), h.data(), h.data()+h.size());
 
-  return std::vector<char>();
+  return returnVal;
 }
 
 template <class baseTxn>
