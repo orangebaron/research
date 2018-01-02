@@ -23,13 +23,13 @@ namespace chain {
     std::vector<char> returnVal();
     unsigned long size = a.size() + b.size() + c.size();
     for (int i=0;i<4;i++) {
-      returnVal.insert(returnVal.end(), ((char*)size)[i]);
+      returnVal.push_back(((char*)size)[i]);
     }
 
     returnVal.insert(returnVal.end(), a.data(), a.data() + a.size());
     returnVal.insert(returnVal.end(), b.data(), b.data() + b.size());
     returnVal.insert(returnVal.end(), c.data(), c.data() + c.size());
-    
+
     return returnVal;
   }
 }
