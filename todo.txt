@@ -1,0 +1,4 @@
+-to bytes functions
+-from bytes constructors
+-approve functions
+-simulated miners etc
