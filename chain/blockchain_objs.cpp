@@ -9,7 +9,7 @@ std::vector<char> BlockchainBlockNoncefree<baseTxn>::getBytes() const {
     std::array<char, 512> h = hash(transactions[i]->getBytes());
     returnVal.insert(returnVal.end(), h.data(), h.data()+h.size());
   }
-  
+
   std::array<char, 512> h = hash(minerRewardTxn->getBytes());
   returnVal.insert(returnVal.end(), h.data(), h.data()+h.size());
 

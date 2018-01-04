@@ -1,7 +1,7 @@
 #ifndef PUNISHMENT_REWARD_TXN_H
 #define PUNISHMENT_REWARD_TXN_H
 
-#include "byteable.h"
+#include "mined_obj.h"
 #include "code.h"
 
 namespace chain {

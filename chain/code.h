@@ -8,7 +8,9 @@
 namespace chain {
   typedef unsigned long MoneyAmt;
   typedef unsigned long GasAmt;
-  typedef struct{} Code;
+  struct Code: public Byteable { //TODO
+    std::vector<char> getBytes() const; //TODO
+  };
   struct ContractCreateTxn: public Byteable {
     Code code;
     Pubkey signer;

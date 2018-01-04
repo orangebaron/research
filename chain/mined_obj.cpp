@@ -1,4 +1,4 @@
-#include "byteable.h"
+#include "mined_obj.h"
 
 using namespace chain;
 
