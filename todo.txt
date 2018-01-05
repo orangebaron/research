@@ -1,4 +1,5 @@
 -to bytes functions
 -from bytes constructors
+-implement cryptopp
 -approve functions
 -simulated miners etc

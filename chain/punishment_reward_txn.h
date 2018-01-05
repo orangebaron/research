@@ -3,6 +3,7 @@
 
 #include "mined_obj.h"
 #include "code.h"
+#include "txn.h"
 
 namespace chain {
   struct PunRwrdSolutionTxn: public Byteable {
@@ -29,7 +30,9 @@ namespace chain {
       MinedObj capTxn;
     } txn;
     PunishmentRewardTxnType type;
+
     std::vector<char> getBytes() const; //TODO
+    void modifyStateAndProof(ChainState<PunishmentRewardTxn>& state, ChainStateProof<PunishmentRewardTxn>& proof) const; //TODO
   };
 }
 
